@@ -5,8 +5,12 @@
 // You can't open the index.html file using a file:// URL.
 
 import { getUserIds } from "./common.mjs";
+import {getData, addData} from "./storage.mjs";
+
+const dropdown = document.getElementById("userSelect");
+
 
 window.onload = function () {
   const users = getUserIds();
-  document.querySelector("body").innerText = `There are ${users.length} users`;
+  
 };

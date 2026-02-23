@@ -9,33 +9,28 @@
   <body>
     <h1>Spaced Repetition Tracker</h1>
 
-    <label for ="user-select">Select User:</label>
-    <select id ="user-select">
-      <option value ="disabled selected">Select a user </option>
-      <option value ="1">User1</option>
-            <option value ="2">User2</option>
-      <option value ="3">User3</option>
-      <option value ="4">User4</option>
-      <option value ="5">User5</option>
-
+    <label for ="userSelect">Select User:</label>
+    <select id ="userSelect">
+      <option value ="" disabled selected>Select user </option>
+      
     </select>
       <div id="agenda-container"></div>
 
 <form id ="addTopicForm">
     <div class ="form-row">
       <div class ="form-group">
-      <label for = "topic">Topic Name</label>
-      <input id="topic" type="text" name="topic" required>
+      <label for = "topicInput">Topic Name</label>
+      <input id="topicInput" type="text" name="topic" required>
       </div>
 </div>
 
 <div class ="form-row">
 <div class ="form-group">
-      <label for ="date">Date:</label>
-      <input id ="date" type ="date" required>
+      <label for ="dateInput">Date:</label>
+      <input id ="dateInput" type ="date" required>
 </div>
       </div>
-      <button type="submit">Add Topic </button>
+      <button type="submit">Submit </button>
     </form>
   </body>
 </html>
