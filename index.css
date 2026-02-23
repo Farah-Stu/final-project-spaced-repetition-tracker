@@ -1,0 +1,36 @@
+/* Stack the rows and the button vertically */
+
+#user-select {
+  margin-bottom: 20px; /* space below the select dropdown */
+  
+}
+
+#addTopicForm {
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Space between each row and button */
+  max-width: 600px; /* Optional width */
+}
+
+/* Horizontal layout for Topic & Date */
+.form-row {
+  display: flex;
+  gap: 20px; /* Space between Topic and Date divs */
+}
+
+/* Label above input in each group */
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Optional button styling */
+button {
+  padding: 6px 12px;
+  width: 120px;
+}
+
+/* Make the main labels bold */
+label{
+    font-weight:bold;
+}
