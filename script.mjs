@@ -5,12 +5,38 @@
 // You can't open the index.html file using a file:// URL.
 
 import { getUserIds } from "./common.mjs";
-import {getData, addData} from "./storage.mjs";
-
-const dropdown = document.getElementById("userSelect");
-
+import { getData, addData } from "./storage.mjs";
 
 window.onload = function () {
+  const userSelect = document.getElementById("userSelect");
+  const agendaContainer = document.getElementById("agendaContainer");
+
   const users = getUserIds();
-  
+  // Function to fill dropdown with user ids
+
+  function populateUserDropdown() {
+    users.forEach((user) => {
+      const option = document.createElement("option");
+      option.textContent = `User ${user}`;
+      option.value = user;
+      userSelect.appendChild(option);
+    });
+  }
+  populateUserDropdown();
+
+  userSelect.addEventListener("change", function () {
+    const userId = userSelect.value;
+    const agenda = getData(userId);
+    agendaContainer.innerHTML = "";
+
+    if (!agenda || agenda.length === 0) {
+      agendaContainer.textContent = "No data available for this user";
+    } else {
+      agenda.forEach((item) => {
+        const paragraph = document.createElement("p");
+        paragraph.textContent = `${item.topic} - ${item.date}`;
+        agendaContainer.appendChild(paragraph);
+      });
+    }
+  });
 };
