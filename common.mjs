@@ -3,21 +3,21 @@ export function getUserIds() {
 }
 
 export function generateRevisionSchedule(topic, baseDate) {
+  const intervals = [7, 30, 90, 180, 365]; // days only
+  const revisions = [];
 
-  const intervals = [0, 7, 30, 90, 180, 365]; // days only
-const revisions = [];    
+  // Loop through intervals and calculate each revision date
 
-    // Loop through intervals and calculate each revision date
-
-  intervals.forEach((days => { // ← use each number as "days"
+  intervals.forEach((days) => {
+    // ← use each number as "days"
 
     // Add the topic and date as an object to the revisions array
-    revisions.push({topic, date:addDays(baseDate, days)});
-  }));
+    revisions.push({ topic, date: addDays(baseDate, days) });
+  });
   return revisions;
 }
 
-  // the earliest date comes first (chronological order).
+// the earliest date comes first (chronological order).
 export function sortTopicsByDate(userData) {
   userData.sort((a, b) => new Date(a.date) - new Date(b.date));
 }
@@ -46,6 +46,6 @@ export function formatDate(dateString) {
   return date.toLocaleDateString("en-GB", {
     day: "numeric",
     month: "long",
-    year: "numeric"
+    year: "numeric",
   });
 }
