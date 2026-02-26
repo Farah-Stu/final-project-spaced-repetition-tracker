@@ -1,4 +1,4 @@
-import { getUserIds, addDays, generateRevisionSchedule } from "./common.mjs";
+import { getUserIds, addDays, generateRevisionSchedule, formatDate } from "./common.mjs";
 import assert from "node:assert";
 import test from "node:test";
 
@@ -49,5 +49,19 @@ test("generateRevisionSchedule handles year rollover", () => {
     { topic: "End of Year", date: addDays(baseDate, 365) },
   ];
   const result = generateRevisionSchedule(topic, baseDate);
+  assert.deepEqual(result, expected);
+});
+
+
+// Test for formatDate
+test("formatDate converts YYYY-MM-DD to DD Month YYYY", () => {
+  // Arrange: prepare input and expected output
+  const inputDate = "2026-02-26"; // YYYY-MM-DD
+  const expected = "26 February 2026"; // human-readable
+
+  // Act: call the function
+  const result = formatDate(inputDate);
+
+  // Assert: check if result matches expected
   assert.deepEqual(result, expected);
 });
