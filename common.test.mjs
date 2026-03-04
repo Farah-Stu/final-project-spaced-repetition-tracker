@@ -7,48 +7,43 @@ test("User count is correct", () => {
 });
 
 test("generateRevisionSchedule produces correct revision dates", () => {
-  const topic = "Python practice";
-  const baseDate = "2026-02-26"; // starting date
-  const expected = [
-    { topic: "Python practice", date: addDays(baseDate, 7) }, // +7 days
-    { topic: "Python practice", date: addDays(baseDate, 30) }, // +30 days
-    { topic: "Python practice", date: addDays(baseDate, 90) }, // +90 days
-    { topic: "Python practice", date: addDays(baseDate, 180) }, // +180 days
-    { topic: "Python practice", date: addDays(baseDate, 365) }, // +1 year
-  ];
-  const result = generateRevisionSchedule(topic, baseDate);
-  assert.deepEqual(result, expected);
+
+  const result = generateRevisionSchedule("Python practice", "2026-02-26");
+  assert.deepEqual(result, [
+
+    { topic: "Python practice", date: "2026-03-05" }, // +7 days //    
+
+    { topic: "Python practice", date: "2026-03-26" }, // +30 days
+    { topic: "Python practice", date: "2026-05-26" }, // +90 days
+    { topic: "Python practice", date: "2026-08-26" },// +180 days
+    { topic: "Python practice", date: "2027-02-26" }, // +1 year
+  ]);
 });
+    
+
 
 test("generateRevisionSchedule works for another topic and date", () => {
-  const topic = "Codwars";
-  const baseDate = "2026-03-01";
-  const expected = [
-    
-    { topic: "Codwars", date: addDays(baseDate, 7) },
-    { topic: "Codwars", date: addDays(baseDate, 30) },
-    { topic: "Codwars", date: addDays(baseDate, 90) },
-    { topic: "Codwars", date: addDays(baseDate, 180) },
-    { topic: "Codwars", date: addDays(baseDate, 365) },
-  ];
-  const result = generateRevisionSchedule(topic, baseDate);
-  assert.deepEqual(result, expected);
-});
 
+  const result= generateRevisionSchedule("Codewars", "2026-03-01");
+    assert.deepEqual(result, [
+    { topic: "Codewars", date: "2026-03-08" },
+    { topic: "Codewars", date: "2026-04-01" },
+    { topic: "Codewars", date: "2026-06-01" },
+    { topic: "Codewars", date: "2026-09-01" },
+    { topic: "Codewars", date: "2027-03-01" },
+    ]);
+  });
+  
 // generateRevisionSchedule with end-of-year date
 test("generateRevisionSchedule handles year rollover", () => {
-  const topic = "End of Year";
-  const baseDate = "2025-12-31"; 
-  const expected = [
-    
-    { topic: "End of Year", date: addDays(baseDate, 7) }, // Jan 7, 2026
-    { topic: "End of Year", date: addDays(baseDate, 30) },
-    { topic: "End of Year", date: addDays(baseDate, 90) },
-    { topic: "End of Year", date: addDays(baseDate, 180) },
-    { topic: "End of Year", date: addDays(baseDate, 365) },
-  ];
-  const result = generateRevisionSchedule(topic, baseDate);
-  assert.deepEqual(result, expected);
+  const result = generateRevisionSchedule("End of Year", "2025-12-31");
+  assert.deepEqual(result, [
+    { topic: "End of Year", date: "2026-01-07"  }, // Jan 7, 2026
+    { topic: "End of Year", date: "2026-01-31" },
+    { topic: "End of Year", date: "2026-03-31" },
+    { topic: "End of Year", date: "2026-06-30" },
+    { topic: "End of Year", date: "2026-12-31" },
+  ]);
 });
 
 

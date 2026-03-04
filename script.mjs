@@ -1,9 +1,3 @@
-// This is a placeholder file which shows how you can access functions defined in other files.
-// It can be loaded into index.html.
-// You can delete the contents of the file once you have understood how it works.
-// Note that when running locally, in order to open a web page which uses modules, you must serve the directory over HTTP e.g. with https://www.npmjs.com/package/http-server
-// You can't open the index.html file using a file:// URL.
-
 import { getUserIds } from "./common.mjs";
 import { getData, addData } from "./storage.mjs";
 import {
@@ -13,7 +7,7 @@ import {
   formatDate,
 } from "./common.mjs";
 
-// show agenda function
+
 
 function showAgenda(userId) {
   const agendaContainer = document.getElementById("agendaContainer");
@@ -25,7 +19,7 @@ function showAgenda(userId) {
     return;
   }
 
-  //Sort topics by next review date. The earliest date first
+    // Sort ascending so the soonest revision appears first
   sortTopicsByDate(agenda);
 
   // Get today's date in YYYY-MM-DD format
@@ -100,7 +94,7 @@ window.onload = function () {
       return;
     }
 
-    // generate revision dates and store
+    // generate revision dates and save
     const newData = generateRevisionSchedule(topic, date);
     addData(userId, newData);
 
