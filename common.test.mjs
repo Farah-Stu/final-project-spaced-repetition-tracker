@@ -1,4 +1,4 @@
-import { getUserIds, addDays, generateRevisionSchedule, formatDate } from "./common.mjs";
+import { getUserIds, addDays, addMonths, generateRevisionSchedule, formatDate } from "./common.mjs";
 import assert from "node:assert";
 import test from "node:test";
 
